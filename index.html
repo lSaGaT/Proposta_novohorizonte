@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial — NodoPrime</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070b14;
+    --surface: #0e1523;
+    --surface2: #141d2e;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00d4ff;
+    --accent2: #00ff9d;
+    --accent3: #7b5cff;
+    --text: #e8edf5;
+    --muted: #6b7a99;
+    --card-glow: rgba(0, 212, 255, 0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 48px 0 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(0,212,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .logo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 20px;
+    margin-bottom: 32px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .logo-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent2);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 7vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 30%, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .header-sub {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .header-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(18px, 4.5vw, 26px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.35;
+    margin-bottom: 16px;
+  }
+
+  .header-desc {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 40px 0;
+  }
+
+  /* ── BENEFIT PILLS ── */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 255, 157, 0.07);
+    border: 1px solid rgba(0, 255, 157, 0.2);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--accent2);
+  }
+
+  .pill::before { content: '✓'; font-weight: 700; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(18px, 4vw, 22px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* ── FEATURE BLOCK ── */
+  .feature-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3), transparent);
+    opacity: 0.6;
+  }
+
+  .feature-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .feature-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #8fa3c0;
+  }
+
+  .feature-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 12px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: #7ab8d4;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .highlight-icon { font-size: 16px; flex-shrink: 0; }
+
+  /* ── TECH TABLE ── */
+  .tech-grid {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .tech-row {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    align-items: center;
+  }
+
+  .tech-row:first-child {
+    background: var(--surface2);
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .tech-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .tech-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  .tech-badge {
+    display: inline-block;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .infra-cost {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .infra-label { font-size: 13px; color: var(--muted); }
+  .infra-label strong { display: block; color: #fff; font-size: 14px; margin-bottom: 2px; }
+
+  .infra-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .infra-period { font-size: 12px; color: var(--muted); }
+
+  /* ── PLANS ── */
+  .plans-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .plan-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .plan-card.featured {
+    border-color: rgba(0, 212, 255, 0.35);
+    background: linear-gradient(135deg, var(--surface), rgba(0,212,255,0.04));
+  }
+
+  .plan-card.featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(0,212,255,0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    color: #000;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .plan-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .plan-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .plan-tagline {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  .price-currency {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .price-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .price-period {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .plan-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .plan-items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #8fa3c0;
+  }
+
+  .plan-items li .check {
+    width: 18px;
+    height: 18px;
+    background: rgba(0, 255, 157, 0.1);
+    border: 1px solid rgba(0, 255, 157, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--accent2);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── IMPLEMENTATION ── */
+  .impl-steps {
+    display: grid;
+    gap: 8px;
+  }
+
+  .impl-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .step-dot {
+    width: 28px;
+    height: 28px;
+    background: rgba(123, 92, 255, 0.1);
+    border: 1px solid rgba(123, 92, 255, 0.25);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent3);
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-size: 13.5px;
+    color: #8fa3c0;
+    padding-top: 4px;
+  }
+
+  /* ── IMPLANTAÇÃO PRICE ── */
+  .impl-price-card {
+    background: var(--surface2);
+    border: 1px solid rgba(123, 92, 255, 0.3);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .impl-price-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent3), var(--accent));
+  }
+
+  .impl-price-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .impl-price-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .impl-price-sub {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .payment-options {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .payment-tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  /* ── TEST PERIOD ── */
+  .test-card {
+    background: linear-gradient(135deg, rgba(0,255,157,0.05), rgba(0,212,255,0.05));
+    border: 1px solid rgba(0,255,157,0.2);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .test-days {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .test-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .test-desc {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  /* ── CONTRACT ── */
+  .contract-items {
+    display: grid;
+    gap: 8px;
+  }
+
+  .contract-item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    align-items: flex-start;
+  }
+
+  .contract-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .contract-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+
+  .contract-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-grid {
+    display: grid;
+    gap: 8px;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .summary-row.highlight {
+    background: rgba(0, 212, 255, 0.05);
+    border-color: rgba(0, 212, 255, 0.2);
+  }
+
+  .summary-item {
+    font-size: 13.5px;
+    color: #8fa3c0;
+  }
+
+  .summary-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .summary-row.highlight .summary-value {
+    color: var(--accent);
+  }
+
+  /* ── RESULTS ── */
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .result-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .result-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .result-text {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 48px 0 60px;
+    border-top: 1px solid var(--border);
+    margin-top: 56px;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .footer-site {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .footer-site a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── SECTION SPACING ── */
+  .section {
+    margin-bottom: 56px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .feature-block,
+  .plan-card,
+  .summary-row {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  /* ── RESPONSIVE TWEAKS ── */
+  @media (max-width: 480px) {
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    .tech-row { grid-template-columns: 1fr; gap: 4px; }
+    .infra-cost { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="container">
+    <div class="logo-badge">
+      <span class="logo-dot"></span>
+      nodoprime.com.br
+    </div>
+    <div class="brand-name">NodoPrime</div>
+    <div class="header-sub">Proposta Comercial</div>
+    <div class="header-title">Automação Inteligente de<br>Atendimento e Captação de Leads</div>
+    <div class="header-desc">Integração de WhatsApp, site e inteligência artificial para transformar seu processo comercial.</div>
+
+    <div class="pills">
+      <span class="pill">Atendimento automático</span>
+      <span class="pill">Qualificação de leads</span>
+      <span class="pill">Direcionamento por setor</span>
+      <span class="pill">Agendamentos automáticos</span>
+      <span class="pill">Organização de contatos</span>
+    </div>
+  </div>
+</div>
+
+<!-- O QUE SERÁ IMPLEMENTADO -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">01</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="section-title">O que será implementado</div>
+    <div class="section-desc">Três frentes de automação trabalhando de forma integrada.</div>
+
+    <div class="feature-block">
+      <div class="feature-number">1</div>
+      <div class="feature-title">Automação de Atendimento no WhatsApp</div>
+      <ul class="feature-list">
+        <li>Atendimento inicial automático 24/7</li>
+        <li>Coleta de informações e qualificação do cliente</li>
+        <li>Identificação de interesse ou necessidade</li>
+        <li>Direcionamento automático para o setor responsável</li>
+        <li>Notificação em tempo real para a equipe</li>
+      </ul>
+      <div class="highlight-box">
+        <span class="highlight-icon">🔥</span>
+        <span>Clientes com alto interesse (leads quentes) são automaticamente direcionados para o responsável pelo setor, sem espera.</span>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-number">2</div>
+      <div class="feature-title">Integração com o Site</div>
+      <ul class="feature-list">
+        <li>Recebimento automático de solicitações do site</li>
+        <li>Qualificação e análise do perfil do lead</li>
+        <li>Registro automático no sistema de gestão</li>
+        <li>Encaminhamento para o atendimento adequado</li>
+      </ul>
+      <div class="highlight-box">
+        <span class="highlight-icon">🎯</span>
+        <span>Nenhum lead é perdido. Toda entrada pelo site entra automaticamente no fluxo de atendimento.</span>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-number">3</div>
+      <div class="feature-title">Sistema de Gestão (Interface de Controle)</div>
+      <ul class="feature-list">
+        <li>Visualização centralizada de todos os leads</li>
+        <li>Acompanhamento em tempo real dos atendimentos</li>
+        <li>Monitoramento do funcionamento da automação</li>
+        <li>Organização e histórico de contatos</li>
+      </ul>
+      <div class="highlight-box">
+        <span class="highlight-icon">📊</span>
+        <span>Funciona como um CRM básico — controle total dos atendimentos em uma única tela.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFRAESTRUTURA -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">02</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="section-title">Estrutura Técnica</div>
+    <div class="section-desc">Recursos tecnológicos necessários para manter a automação funcionando.</div>
+
+    <div class="tech-grid">
+      <div class="tech-row" style="grid-template-columns: 1fr; background: var(--surface2);">
+        <span class="tech-name" style="font-size:11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Serviço — Função</span>
+      </div>
+      <div class="tech-row">
+        <span class="tech-name">Banco de Dados</span>
+        <span class="tech-desc">Armazenamento das informações dos leads e atendimentos</span>
+      </div>
+      <div class="tech-row">
+        <span class="tech-name">Servidor VPS</span>
+        <span class="tech-desc">Execução contínua do sistema de automação</span>
+      </div>
+      <div class="tech-row">
+        <span class="tech-name">API WhatsApp</span>
+        <span class="tech-desc">Integração oficial com o WhatsApp Business</span>
+      </div>
+      <div class="tech-row">
+        <span class="tech-name">Inteligência Artificial</span>
+        <span class="tech-desc">Automação de respostas e análise de intenção</span>
+      </div>
+      <div class="tech-row">
+        <span class="tech-name">Domínio</span>
+        <span class="tech-desc">Acesso seguro ao sistema de gestão</span>
+      </div>
+    </div>
+
+    <div class="infra-cost">
+      <div class="infra-label">
+        <strong>Custo total estimado da infraestrutura</strong>
+        Recursos tecnológicos combinados
+      </div>
+      <div>
+        <div class="infra-price">R$ 323<span style="font-size:16px;">,33</span></div>
+        <div class="infra-period">por mês</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLANOS -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">03</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="section-title">Modelos de Contratação</div>
+    <div class="section-desc">Escolha o modelo que melhor se adapta à sua operação.</div>
+
+    <div class="plans-grid">
+
+      <!-- PLANO 1 -->
+      <div class="plan-card featured">
+        <div class="plan-badge">Recomendado</div>
+        <div class="plan-num">Plano 01</div>
+        <div class="plan-name">Gestão Completa</div>
+        <div class="plan-tagline">Nossa equipe cuida de tudo para você</div>
+        <div class="plan-price">
+          <span class="price-currency">R$</span>
+          <span class="price-value">400</span>
+          <span class="price-period">/ mês</span>
+        </div>
+        <ul class="plan-items">
+          <li><span class="check">✓</span>Gestão completa da infraestrutura</li>
+          <li><span class="check">✓</span>Monitoramento contínuo do sistema</li>
+          <li><span class="check">✓</span>Manutenção da automação</li>
+          <li><span class="check">✓</span>Gestão e ajustes da inteligência artificial</li>
+          <li><span class="check">✓</span>Suporte técnico contínuo</li>
+        </ul>
+        <div class="highlight-box" style="margin-top:18px;">
+          <span class="highlight-icon">💡</span>
+          <span>Ideal para empresas que não querem se preocupar com a parte técnica.</span>
+        </div>
+      </div>
+
+      <!-- PLANO 2 -->
+      <div class="plan-card">
+        <div class="plan-num">Plano 02</div>
+        <div class="plan-name">Gestão Própria</div>
+        <div class="plan-tagline">Você gerencia a infraestrutura</div>
+        <div class="plan-price">
+          <span class="price-currency">~R$</span>
+          <span class="price-value">324</span>
+          <span class="price-period">/ mês</span>
+        </div>
+        <ul class="plan-items">
+          <li><span class="check">✓</span>Sistema configurado e entregue</li>
+          <li><span class="check">✓</span>Custos diretos de infraestrutura</li>
+          <li><span class="check">✓</span>Autonomia total sobre o sistema</li>
+          <li><span class="check">✓</span>Acesso completo à interface de gestão</li>
+        </ul>
+      </div>
+
+      <!-- PLANO 3 -->
+      <div class="plan-card">
+        <div class="plan-num">Plano 03</div>
+        <div class="plan-name">Modelo Híbrido</div>
+        <div class="plan-tagline">Gestão própria + suporte sob demanda</div>
+        <div class="plan-price">
+          <span class="price-currency">R$</span>
+          <span class="price-value">200</span>
+          <span class="price-period">/ 30 dias</span>
+        </div>
+        <ul class="plan-items">
+          <li><span class="check">✓</span>Pacote de suporte técnico</li>
+          <li><span class="check">✓</span>Ajustes e correções no sistema</li>
+          <li><span class="check">✓</span>Pequenas melhorias</li>
+          <li><span class="check">✓</span>Validade de 30 dias após contratação</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IMPLANTAÇÃO -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">04</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="section-title">Implantação do Sistema</div>
+    <div class="section-desc">Tudo configurado do zero, pronto para usar.</div>
+
+    <div class="impl-steps">
+      <div class="impl-step"><div class="step-dot">01</div><div class="step-text">Configuração do servidor e ambiente de produção</div></div>
+      <div class="impl-step"><div class="step-dot">02</div><div class="step-text">Criação dos fluxos de atendimento personalizados</div></div>
+      <div class="impl-step"><div class="step-dot">03</div><div class="step-text">Integração com WhatsApp Business API</div></div>
+      <div class="impl-step"><div class="step-dot">04</div><div class="step-text">Integração com o site da empresa</div></div>
+      <div class="impl-step"><div class="step-dot">05</div><div class="step-text">Configuração e treinamento da inteligência artificial</div></div>
+      <div class="impl-step"><div class="step-dot">06</div><div class="step-text">Entrega da interface de gestão (CRM básico)</div></div>
+    </div>
+
+    <div class="impl-price-card">
+      <div class="impl-price-label">Valor de implantação</div>
+      <div class="impl-price-value">R$ 2.000</div>
+      <div class="impl-price-sub">Pagamento único — setup completo do sistema</div>
+      <div class="payment-options">
+        <span class="payment-tag">💳 À vista</span>
+        <span class="payment-tag">📆 Em até 3x (+10%)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERÍODO DE TESTE -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">05</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="section-title">Período de Teste</div>
+
+    <div class="test-card">
+      <div class="test-days">20</div>
+      <div class="test-label">dias corridos de teste</div>
+      <div class="test-desc">Após a implantação, você terá 20 dias para testar a solução completa. A formalização do contrato só acontece se decidir continuar.</div>
+    </div>
+  </div>
+
+  <!-- CONTRATO -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">06</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="section-title">Condições Contratuais</div>
+
+    <div class="contract-items">
+      <div class="contract-item">
+        <span class="contract-icon">🔓</span>
+        <div>
+          <div class="contract-title">Cancelamento sem multa</div>
+          <div class="contract-desc">O contrato pode ser encerrado a qualquer momento, sem nenhuma penalidade.</div>
+        </div>
+      </div>
+      <div class="contract-item">
+        <span class="contract-icon">📈</span>
+        <div>
+          <div class="contract-title">Reajuste anual</div>
+          <div class="contract-desc">A cada 12 meses, os valores poderão ser reajustados conforme IPCA, IGP-M, INPC ou INCC, de acordo com o cenário econômico.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMO -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">07</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="section-title">Resumo da Proposta</div>
+
+    <div class="summary-grid">
+      <div class="summary-row highlight">
+        <span class="summary-item">Implantação do sistema</span>
+        <span class="summary-value">R$ 2.000</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-item">Plano Gerenciado (mensal)</span>
+        <span class="summary-value">R$ 400 / mês</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-item">Plano Autônomo (mensal)</span>
+        <span class="summary-value">~R$ 324 / mês</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-item">Suporte avulso (30 dias)</span>
+        <span class="summary-value">R$ 200</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTADOS -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">08</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="section-title">Resultados Esperados</div>
+
+    <div class="results-grid">
+      <div class="result-item">
+        <span class="result-icon">⚡</span>
+        <div class="result-text">Redução do tempo de atendimento</div>
+      </div>
+      <div class="result-item">
+        <span class="result-icon">🗂️</span>
+        <div class="result-text">Organização de contatos e leads</div>
+      </div>
+      <div class="result-item">
+        <span class="result-icon">🎯</span>
+        <div class="result-text">Encaminhamento automático por setor</div>
+      </div>
+      <div class="result-item">
+        <span class="result-icon">📈</span>
+        <div class="result-text">Melhor aproveitamento comercial</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-logo">NodoPrime</div>
+    <div class="footer-site"><a href="https://nodoprime.com.br">nodoprime.com.br</a></div>
+  </div>
+</div>
+
+</body>
+</html>
